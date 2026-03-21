@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ROBOT RACE // LIVE DASHBOARD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Bebas+Neue&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<div class="header">
+  <div class="header-brand">
+    <div class="header-title">⚡ ROBOT RACE // LIVE DASHBOARD</div>
+    <div class="header-tag">MAKERLABS COMPETITION SYSTEM</div>
+  </div>
+  <div class="conn-pill">
+    <div class="conn-dot" id="connDot"></div>
+    <span id="connText">CONNECTING…</span>
+  </div>
+</div>
+
+<!-- ── BODY ── -->
+<div class="body-wrap">
+
+  <!-- MAIN DASHBOARD -->
+  <div class="dashboard" id="dashboard">
+
+    <!-- Status banner -->
+    <div class="status-banner">
+      <div class="banner-top">
+        <div>
+          <div class="status-eyebrow">CURRENT STATUS</div>
+          <div id="statusText" class="s-waiting">WAITING FOR ROBOT…</div>
+          <div id="robotIdBadge"></div>
+          <div id="timerDisplay"></div>
+        </div>
+        <div class="banner-right">
+          <div class="banner-score-label">LIVE SCORE</div>
+          <div id="liveScore">—</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Challenge table -->
+    <div class="table-wrap">
+      <div class="table-header-bar">▶ CHALLENGE LOG</div>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>CHALLENGE</th>
+            <th>STATUS</th>
+            <th>PTS EARNED</th>
+            <th>TIMESTAMP</th>
+            <th>TOTAL SCORE</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr class="empty-row"><td colspan="6">— AWAITING RUN DATA —</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- End results -->
+    <div class="end-card" id="endCard">
+      <div class="end-card-title" id="endTitle">RUN COMPLETE</div>
+      <div class="results-grid" id="resultsGrid"></div>
+    </div>
+
+  </div><!-- /dashboard -->
+
+  <!-- LEADERBOARD SIDEBAR -->
+  <div class="sidebar">
+    <div class="sb-head">
+      <div class="sb-title">🏆 LEADERBOARD</div>
+      <div class="sb-sub">RANKED BY COMPLETION TIME (ASC)</div>
+    </div>
+    <div class="sb-list" id="lbList">
+      <div class="sb-empty">NO RUNS COMPLETED YET<br><br>FINISH OR DISQUALIFY A RUN<br>TO APPEAR ON THE BOARD</div>
+    </div>
+    <div class="sb-footer">
+      <button class="btn-export" onclick="exportCSV()">⬇ EXPORT ALL RESULTS (CSV)</button>
+      <button class="btn-clear" onclick="clearLeaderboard()">🗑 CLEAR LEADERBOARD</button>
+    </div>
+  </div>
+
+</div><!-- /body-wrap -->
+
+<!-- DEBUG BAR -->
+<div class="debug-bar">
+  <span class="db-seg">DB: <span>http://127.0.0.1:8086</span></span>
+  <span class="db-seg">BUCKET: <span>makerlabs</span></span>
+  <span class="db-seg">ORG: <span>istic</span></span>
+  <span class="db-seg">POLL: <span>1 s</span></span>
+  <span class="db-seg" id="lastPoll">LAST POLL: <span>—</span></span>
+</div>
+
+<!-- POPUP OVERLAY -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup-box" id="popupBox">
+    <div id="popupEmoji">❌</div>
+    <div id="popupText">DISQUALIFIED</div>
+    <div id="popupCountdown">CLOSING IN 5…</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     SCRIPT
+═══════════════════════════════════════════════════════════════ -->
+  <script src="js/app.js"></script>
+</body>
+</html>

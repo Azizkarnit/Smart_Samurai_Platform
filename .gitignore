@@ -1,0 +1,27 @@
+# ── Virtual Environment ──────────────────
+Lib/
+Scripts/
+Include/
+pip.pyz
+pyvenv.cfg
+
+# ── CSV Data Files ───────────────────────
+leaderboard.csv
+robot_race_*.csv
+
+# ── Python Cache ─────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ── OS Junk ──────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Editor / IDE ─────────────────────────
+.vscode/
+.idea/
+*.suo
+*.user
