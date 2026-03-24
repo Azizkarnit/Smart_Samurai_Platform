@@ -23,10 +23,11 @@ from flask import Flask, send_from_directory, request, jsonify
 PORT        = 5000
 SCRIPT_DIR  = os.path.dirname(os.path.abspath(__file__))
 HTML_FILE   = "robot_dashboard.html"
-CSV_FILE    = os.path.join(SCRIPT_DIR, "leaderboard.csv")
+CSV_FILE     = os.path.join(SCRIPT_DIR, "leaderboard.csv")
+PLAYERS_FILE = os.path.join(SCRIPT_DIR, "homologation.csv")
 
 CSV_FIELDS  = [
-    "rank", "robotId", "score", "time", "challenges",
+    "rank", "robotId", "robotName", "leader", "run", "score", "time", "challenges",
     "challenge1", "challenge2", "challenge3", "challenge4", "challenge5",
     "fin", "finished", "disq", "timestamp"
 ]
@@ -45,6 +46,34 @@ def clear_csv():
 def index():
     return send_from_directory(SCRIPT_DIR, HTML_FILE)
 
+@app.route("/api/players", methods=["GET"])
+def get_players():
+    """Return players as an ordered list from homologation.csv.
+    Index 0 = first row = InfluxDB id_robot 0, index 1 = second row, etc.
+    """
+    players = []
+    if not os.path.exists(PLAYERS_FILE):
+        return jsonify({"error": "homologation.csv not found"}), 404
+    with open(PLAYERS_FILE, "r", encoding="utf-8-sig") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            players.append({
+                "csvId":      row.get("id_robot",    "").strip(),
+                "leader":     row.get("Leader_name", "").strip(),
+                "robotName":  row.get("Robot_name",  "").strip(),
+                "club":       row.get("Nom_club",    "").strip(),
+            })
+    return jsonify(players)
+
+
+# ── Catch-all: serve css/, js/, and any other static file ─────
+@app.route("/<path:filepath>")
+def static_files(filepath):
+    # Block /api routes from falling through here
+    if filepath.startswith("api/"):
+        return jsonify({"error": "not found"}), 404
+    return send_from_directory(SCRIPT_DIR, filepath)
+
 @app.route("/api/leaderboard", methods=["GET"])
 def get_leaderboard():
     """Return current leaderboard as JSON array."""
@@ -56,6 +85,9 @@ def get_leaderboard():
         for row in reader:
             entries.append({
                 "robotId":    int(row.get("robotId",    0)),
+                "robotName":  row.get("robotName",  ""),
+                "leader":     row.get("leader",     ""),
+                "run":        int(row.get("run",    1)),
                 "score":      int(row.get("score",      0)),
                 "time":       int(row.get("time",       0)),
                 "challenges": int(row.get("challenges", 0)),
@@ -86,6 +118,9 @@ def save_leaderboard():
             writer.writerow({
                 "rank":        i + 1,
                 "robotId":     entry.get("robotId",    ""),
+                "robotName":   entry.get("robotName",  ""),
+                "leader":      entry.get("leader",     ""),
+                "run":         entry.get("run",        1),
                 "score":       entry.get("score",      0),
                 "time":        entry.get("time",       0),
                 "challenges":  entry.get("challenges", 0),
