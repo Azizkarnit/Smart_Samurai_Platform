@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Path of the Samurai — Animated</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style/style1.css">
+</head>
+<body>
+<div class="petals" aria-hidden="true">
+  <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div>
+  <div class="petal p4"></div><div class="petal p5"></div><div class="petal p6"></div>
+  <div class="petal p7"></div><div class="petal p8"></div><div class="petal p9"></div>
+  <div class="petal p10"></div>
+</div>
+<!-- HELP BAR -->
+<div class="helpbar">
+  <div class="hkey"><kbd>SPACE</kbd> Dark/Light</div>
+  <div class="hkey"><kbd>R</kbd> Toggle Run 1↔2</div>
+  <div class="hkey"><kbd>←</kbd> Try Again (replay)</div>
+  <div class="hkey"><kbd>P</kbd> Export runs.csv</div>
+  <div class="hkey"><kbd>L</kbd> Final Results</div>
+  <div class="hkey"><kbd>C</kbd> Clear all data</div>
+</div>
+<header class="hdr">
+  <div class="hbr l" aria-hidden="true">
+    <svg viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 105 Q45 68 90 45 Q140 20 192 5" stroke-width="2" fill="none" class="bl"/>
+      <path d="M90 45 Q108 28 122 16" stroke-width="1.5" fill="none" class="bl"/>
+      <g class="bgc"><circle cx="122" cy="16" r="5.5"/><circle cx="129" cy="9" r="4"/><circle cx="115" cy="10" r="4.5"/><circle cx="123" cy="3" r="3"/></g>
+      <g class="bgc"><circle cx="192" cy="5" r="5"/><circle cx="199" cy="0" r="3"/></g>
+      <g class="bgc" opacity=".55"><circle cx="105" cy="34" r="3.5"/><circle cx="97" cy="40" r="3"/></g>
+    </svg>
+  </div>
+  <div class="hc">
+    <h1 class="ht">Path of the Samurai</h1>
+    <p class="hs">— Warrior's Journey —</p>
+    <div class="hconn">
+      <span class="cdot" id="connDot"></span>
+      <span id="connText">CONNECTING…</span>
+      
+    </div>
+  </div>
+  <div class="hbr r" aria-hidden="true">
+    <svg viewBox="0 0 200 105" xmlns="http://www.w3.org/2000/svg">
+      <path d="M200 105 Q155 68 110 45 Q60 20 8 5" stroke-width="2" fill="none" class="bl"/>
+      <path d="M110 45 Q92 28 78 16" stroke-width="1.5" fill="none" class="bl"/>
+      <g class="bgc"><circle cx="78" cy="16" r="5.5"/><circle cx="71" cy="9" r="4"/><circle cx="85" cy="10" r="4.5"/><circle cx="77" cy="3" r="3"/></g>
+      <g class="bgc"><circle cx="8" cy="5" r="5"/><circle cx="1" cy="0" r="3"/></g>
+      <g class="bgc" opacity=".55"><circle cx="95" cy="34" r="3.5"/><circle cx="103" cy="40" r="3"/></g>
+    </svg>
+  </div>
+</header>
+<div class="pbody">
+  <div class="lcol">
+    <!-- INFO BAR -->
+    <div class="ibar">
+      <!-- Hidden elements kept for JS compatibility — not shown -->
+      <span id="dClub" style="display:none"></span>
+      <span id="scoreD" style="display:none"></span>
+      <!-- Visible info fields -->
+      <div class="ifield"><span class="ilabel">⚔ Warrior</span><span class="ival" id="dRobot">—</span></div>
+      <div class="isep"></div>
+      <div class="ifield"><span class="ilabel">🌸 Leader</span><span class="ival" id="dLeader">—</span></div>
+      <div class="isep"></div>
+      <div class="ifield"><span class="ilabel">📜 Run</span>
+        <div class="rtog"><button class="rbtn on" id="rb1" onclick="setRun(1)">Run 1</button><button class="rbtn" id="rb2" onclick="setRun(2)">Run 2</button></div>
+      </div>
+      <div class="isep"></div>
+      <div class="ifield"><span class="ilabel">Status</span><span class="stxt sw" id="statusText">Awaiting…</span></div>
+      <div class="isep"></div>
+      <div class="ifield"><span class="ilabel">⏱ Time</span><span class="ival mono" id="timerD">—</span></div>
+    </div>
+    <!-- MAP -->
+    <div class="mpanel">
+      <div class="mwrap" id="mwrap">
+        <!-- VIDEO — replace "run_video.mp4" with your actual video filename -->
+        <video id="runVideo" class="mimg" src="static/robot_run_record.mp4"
+          preload="auto" muted playsinline
+          style="object-fit:cover;">
+        </video>
+
+        <!-- CHALLENGE MARKERS — keep these, they turn green on arrival -->
+        <div class="mk" id="mk-start" style="--mx:5.25%;--my:82%">⛩ START</div>
+        <div class="mk" id="mk-c1"    style="--mx:82.75%;--my:93%">① Bamboo Forest</div>
+        <div class="mk" id="mk-c2"    style="--mx:24%;--my:65.5%">② Katana Forge</div>
+        <div class="mk" id="mk-c3"    style="--mx:97%;--my:41.2%">③ Dark Forest</div>
+        <div class="mk" id="mk-c4"    style="--mx:8.25%;--my:5%">④ Broken Bridge</div>
+        <div class="mk" id="mk-c5"    style="--mx:5.25%;--my:72%">🏁 Balance Yin-Yang</div>
+        <!--<div class="mk" id="mk-fin"   style="--mx:5.25%;--my:76.5%"> FINISH</div>-->
+      </div>
+    </div>
+    <!-- SUMMARY BAR -->
+    <div class="sbar">
+      <!-- Hidden elements kept for JS compatibility -->
+      <span id="sCh" style="display:none"></span>
+      <span id="sScore" style="display:none"></span>
+      <span id="sRid" style="display:none"></span>
+      <span id="sPoll" style="display:none"></span>
+      <!-- Visible summary fields — large for projection -->
+      <div class="sfield"><span class="slabel">⏱ Time</span><span class="sval mono" id="sTime">—</span></div>
+      <div class="ssep"></div>
+      <div class="sfield"><span class="slabel">Outcome</span><span class="sval" id="sOut">—</span></div>
+    </div>
+  </div>
+</div>
+<!-- POPUP -->
+<div class="popov" id="popOv">
+  <div class="popbox" id="popBox">
+    <div id="popEmoji" class="popemoji"></div>
+    <div id="popText" class="poptxt"></div>
+    <div id="popCd" class="popcd"></div>
+  </div>
+</div>
+<script src="script/script1.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Path of the Samurai — Final Results</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style/style2.css">
+</head>
+<body>
+<div class="petals" aria-hidden="true">
+  <div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div>
+  <div class="petal p4"></div><div class="petal p5"></div><div class="petal p6"></div>
+  <div class="petal p7"></div><div class="petal p8"></div><div class="petal p9"></div>
+  <div class="petal p10"></div>
+</div>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hbr l" aria-hidden="true">
+    <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 100 Q45 65 90 42 Q140 18 192 4" stroke-width="2" fill="none" class="bl"/>
+      <path d="M90 42 Q108 26 122 14" stroke-width="1.5" fill="none" class="bl"/>
+      <g class="bgc"><circle cx="122" cy="14" r="5.5"/><circle cx="129" cy="7" r="4"/><circle cx="115" cy="8" r="4.5"/><circle cx="123" cy="1" r="3"/></g>
+      <g class="bgc"><circle cx="192" cy="4" r="5"/><circle cx="199" cy="-1" r="3"/></g>
+      <g class="bgc" opacity=".55"><circle cx="105" cy="32" r="3.5"/><circle cx="97" cy="38" r="3"/></g>
+    </svg>
+  </div>
+  <div class="hc">
+    <h1 class="ht">⚔ Path of the Samurai ⚔</h1>
+    <p class="hs">— Final Rankings —</p>
+    <p class="htag">SCORE GÉNÉRAL = 0.43×H + 0.2×S + 0.37×S/T</p>
+  </div>
+  <div class="hbr r" aria-hidden="true">
+    <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M200 100 Q155 65 110 42 Q60 18 8 4" stroke-width="2" fill="none" class="bl"/>
+      <path d="M110 42 Q92 26 78 14" stroke-width="1.5" fill="none" class="bl"/>
+      <g class="bgc"><circle cx="78" cy="14" r="5.5"/><circle cx="71" cy="7" r="4"/><circle cx="85" cy="8" r="4.5"/><circle cx="77" cy="1" r="3"/></g>
+      <g class="bgc"><circle cx="8" cy="4" r="5"/><circle cx="1" cy="-1" r="3"/></g>
+      <g class="bgc" opacity=".55"><circle cx="95" cy="32" r="3.5"/><circle cx="103" cy="38" r="3"/></g>
+    </svg>
+  </div>
+</header>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- LOADING -->
+  <div id="loadScreen">
+    <div class="load-spinner"></div>
+    <div id="loadMsg">Reading scrolls of battle…</div>
+  </div>
+
+  <!-- PODIUM STAGE (hidden until ready) -->
+  <div id="podiumStage">
+    <!-- Announce banner -->
+    <div class="announce" id="announce"></div>
+
+    <!-- Top 3 podium -->
+    <div class="podium-row" id="podiumRow">
+      <!-- built by JS -->
+    </div>
+
+    <!-- Divider -->
+    <div class="divider">
+      <div class="div-line"></div>
+      <div class="div-icon">⚔</div>
+      <div class="div-line"></div>
+    </div>
+
+    <!-- Rest of players -->
+    <div class="rest-wrap">
+      <table class="rest-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Warrior</th>
+            <th>Leader</th>
+            <th>Score Général</th>
+            <th>Run Score</th>
+            <th>Time</th>
+            <th>Homologation</th>
+            <th>Run</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="restBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<script src="script/script2.js"></script>
+</body>
+</html>

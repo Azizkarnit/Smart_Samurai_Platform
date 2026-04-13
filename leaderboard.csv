@@ -1,0 +1,11 @@
+rank,robotId,robotName,leader,club,run,score,time,H,challenges,challenge1,challenge2,challenge3,challenge4,challenge5,fin,finished,disq,timestamp
+1,12,zvenden,nidhal alouani,sans club,1,100,10607,5.384615385,5,YES,YES,YES,YES,YES,YES,YES,NO,2026-04-12T13:42:51.329Z
+2,13,za9la bus,ahmed yaaichi,ieee esprit,1,100,25951,5.384615385,5,YES,YES,YES,YES,YES,YES,YES,NO,2026-04-12T13:46:04.331Z
+3,11,naffeti,doua bouhachem,ieee esprit,1,40,20242,5.384615385,2,YES,YES,NO,NO,NO,NO,NO,YES,2026-04-12T13:38:20.224Z
+4,16,naffeti,doua bouhachem,ieee esprit,2,20,15350,5.384615385,1,YES,NO,NO,NO,NO,NO,NO,YES,2026-04-12T14:49:00.229Z
+5,17,zvenden,nidhal alouani,sans club,2,20,12413,5.384615385,1,YES,NO,NO,NO,NO,NO,NO,YES,2026-04-12T14:54:58.229Z
+6,10,sofine,bouziz aicha,ieee esprit,1,0,1786,5.384615385,0,NO,NO,NO,NO,NO,NO,NO,YES,2026-04-12T13:36:08.224Z
+7,14,lefrasss,mohamed felhi,ieee esprit,1,0,1461,5.384615385,0,NO,NO,NO,NO,NO,NO,NO,YES,2026-04-12T13:49:05.227Z
+8,15,sofine,bouziz aicha,ieee esprit,2,0,3875,5.384615385,0,NO,NO,NO,NO,NO,NO,NO,YES,2026-04-12T14:47:06.229Z
+9,18,za9la bus,ahmed yaaichi,ieee esprit,2,0,1105,5.384615385,0,NO,NO,NO,NO,NO,NO,NO,YES,2026-04-12T14:55:39.238Z
+10,19,lefrasss,mohamed felhi,ieee esprit,2,0,1259,5.384615385,0,NO,NO,NO,NO,NO,NO,NO,YES,2026-04-12T14:57:13.242Z
